@@ -20,7 +20,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
     normalizationContext: [
         'groups' => ['read:collection'], 
         'openapi_definition_name' => 'Collection'],
-    denormalizationContext: ['groups' => ['write:Game']],
     collectionOperations: [
         'get', 
         'post',
@@ -94,31 +93,31 @@ class Game
     /**
      * @ORM\Column(type="text")
      */
-    #[Groups('read:item')]
+    #[Groups('read:collection', 'read:item')]
     private $description;
 
     /**
      * @ORM\ManyToMany(targetEntity=Genre::class, mappedBy="game")
      */
-    #[Groups('read:item')]
+    #[Groups('read:collection', 'read:item')]
     private $genres;
 
     /**
      * @ORM\ManyToMany(targetEntity=Type::class, mappedBy="game")
      */
-    #[Groups('read:item')]
+    #[Groups('read:collection', 'read:item')]
     private $types;
 
     /**
      * @ORM\ManyToMany(targetEntity=Editor::class, mappedBy="game")
      */
-    #[Groups('read:item')]
+    #[Groups('read:collection', 'read:item')]
     private $editors;
 
     /**
      * @ORM\ManyToMany(targetEntity=Platform::class, mappedBy="game")
      */
-    #[Groups(['read:item'])]
+    #[Groups('read:collection', 'read:item')]
     private $platforms;
 
     /**

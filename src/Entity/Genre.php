@@ -33,13 +33,13 @@ class Genre
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    #[Groups(['read:item', 'read:Game'])]
+    #[Groups(['read:item', 'read:collection'])]
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    #[Groups(['read:item', 'read:Game', 'write:Game'])]
+    #[Groups(['read:item', 'read:collection'])]
     private $name;
 
     /**
